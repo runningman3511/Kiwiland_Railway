@@ -11,18 +11,18 @@ def main():
     except:
         print(f'Please check your input graph since it caused an error')
 
-    print(neograph.solve_distance("A-B-C",'Output #1:'))
-    print(neograph.solve_distance("A-D",'Output #2:'))
-    print(neograph.solve_distance("A-D-C",'Output #3:'))
-    print(neograph.solve_distance("A-E-B-C-D",'Output #4:'))
-    print(neograph.solve_distance("A-E-D",'Output #5:'))
+    print(f'Output #1: {neograph.solve_distance("A-B-C")}')
+    print(f'Output #2: {neograph.solve_distance("A-D")}')
+    print(f'Output #3: {neograph.solve_distance("A-D-C")}')
+    print(f'Output #4: {neograph.solve_distance("A-E-B-C-D")}')
+    print(f'Output #5: {neograph.solve_distance("A-E-D")}')
 
-    print(neograph.solve_same_start_stop_maximum('C','C',3,'Output #6:'))
-    print(neograph.solve_start_stop_exact('A','C',4,'Output #7:'))
+    print(f'Output #6: {neograph.solve_same_start_stop_maximum("C","C",3)}')
+    print(f'Output #7: {neograph.solve_start_stop_exact("A","C",4)}')
  
-    print(neograph.solve_shortest_routev2('A','C','Output #8:'))
-    print(neograph.solve_shortest_routev2('B','B','Output #9:'))
+    print(f'Output #8: {neograph.solve_shortest_routev2("A","C")}')
+    print(f'Output #9: {neograph.solve_shortest_routev2("B","B")}')
 
-    print(neograph.solve_number_of_different_routes('C','C',30,'Output #10:'))
+    print(f'Output #10: {neograph.solve_number_of_different_routes("C","C",30)}')
 if __name__ == "__main__":
     main()

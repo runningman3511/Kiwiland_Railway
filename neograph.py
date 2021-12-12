@@ -24,7 +24,7 @@ class Neograph:
             self.add_node(end)
         self.node_list[start].neighbour_add(self.node_list[end], weight)
 
-    def solve_distance(self,input_data, print_prefix):
+    def solve_distance(self,input_data):
         distance=0
         input=input_data.split('-')
         start_town=self.node_list[input[0]]
@@ -35,16 +35,16 @@ class Neograph:
             try:
                 length_to_next_stop=start_town.one_way_connections_to[next_stop_object]
             except:
-                return f'{print_prefix} NO SUCH ROUTE' 
+                return f'NO SUCH ROUTE' 
             distance=distance+length_to_next_stop
             start_town=next_stop_object
 
         
-        return f'{print_prefix} {distance}'
+        return distance
 
-    def solve_same_start_stop_maximum(self, original_town, end_town, max_stops,print_prefix):
+    def solve_same_start_stop_maximum(self, original_town, end_town, max_stops):
         routes_found=self.solve_same_start_stop_maximum_recursive(original_town, end_town, max_stops, 0)
-        return f'{print_prefix} {routes_found}'
+        return routes_found
 
     def solve_same_start_stop_maximum_recursive(self, original_town, end_town, max_stops, routes_found, start_town=None, number_of_stops=-1,path=''):
 
@@ -66,9 +66,9 @@ class Neograph:
             routes_found = self.solve_same_start_stop_maximum_recursive(original_town, end_town, max_stops, routes_found,next_stop.name, number_of_stops,path)
         return routes_found
         
-    def solve_start_stop_exact(self, original_town, end_town, max_stops,print_prefix):
+    def solve_start_stop_exact(self, original_town, end_town, max_stops):
         routes_found=self.solve_start_stop_exact_recursive(original_town, end_town, max_stops, 0)
-        return f'{print_prefix} {routes_found}'
+        return routes_found
 
     def solve_start_stop_exact_recursive(self, original_town, end_town, max_stops, routes_found, start_town=None, number_of_stops=-1,path=''):
 
@@ -90,13 +90,13 @@ class Neograph:
             routes_found = self.solve_start_stop_exact_recursive(original_town, end_town, max_stops, routes_found,next_stop.name, number_of_stops,path)
         return routes_found
   
-    def solve_shortest_routev2(self, original_town, end_town,print_prefix):
+    def solve_shortest_routev2(self, original_town, end_town):
         paths_fond=self.solve_shortest_route_recursivev2(original_town, end_town)
         distance_list = []
         for path in paths_fond:
             distance_list.append(self.get_lengh_of_route(path))
         distance_list=sorted(distance_list)
-        return f'{print_prefix} {distance_list[0]}'
+        return distance_list[0]
 
     def solve_shortest_route_recursivev2(self, original_town, end_town, start_town=None,path='',paths_fond=[]):
         first_itteration = False
@@ -142,7 +142,7 @@ class Neograph:
             min_distance = self.solve_route_calculation_recursive_v3(original_town, end_town,next_stop.name,path,paths_fond)
         return paths_fond
 
-    def solve_number_of_different_routes(self,original_town, end_town,max_distance,print_prefix):
+    def solve_number_of_different_routes(self,original_town, end_town,max_distance):
         paths_fond=self.solve_route_calculation_recursive_v3(original_town, end_town)
         distance_list = []
         distance_list_less_then_desired =0
@@ -151,7 +151,7 @@ class Neograph:
             lenght = self.get_lengh_of_route(path)
             if lenght < max_distance:
                 distance_list_less_then_desired = distance_list_less_then_desired + 1
-        return f'{print_prefix} {distance_list_less_then_desired}'
+        return distance_list_less_then_desired
 
     def get_lengh_of_route(self,path):
         i=0
