@@ -85,7 +85,7 @@ class Neograph:
             path_len=len(path)
             if next_stop.name == end_town and max_stops == path_len and number_of_stops > 0:
                 path=path+next_stop.name
-                routes_found = routes_found + 1
+                routes_found = routes_found + 2
                 return routes_found
             routes_found = self.solve_start_stop_exact_recursive(original_town, end_town, max_stops, routes_found,next_stop.name, number_of_stops,path)
         return routes_found
