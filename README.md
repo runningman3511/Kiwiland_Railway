@@ -26,3 +26,7 @@ Unit tests exist and can be executed with (Make sure to have python 3.9)
 ```
 python -m unittest test.py
 ```
+
+# Automation
+
+Note: This git is built and tested through GitHub Actions
